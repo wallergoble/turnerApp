@@ -19,12 +19,14 @@ router.get('/search/:query', (req, res, next) => {
   let query = req.params.name
   Title.find({ 'TitleName' : { '$regex': req.params.query, '$options': 'i' } })
     .then(titles => res.json(titles))
+    .catch( err => console.error(err))
 })
 
 // Get title by ID
 router.get('/id/:id', (req, res, next) => {
   Title.find({"TitleId" : req.params.id})
     .then(title => res.json(title))
+    .catch( err => console.error(err))
 })
 
 // Sanity Checker
@@ -34,6 +36,7 @@ router.get('/sanity', (req, res, next) => {
       console.log(title)
       res.json(title)
     })
+    .catch( err => console.error(err))
 })
 
 module.exports = router;
