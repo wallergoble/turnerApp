@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import SearchBar from './SearchBar'
 
 class App extends Component {
   constructor(props) {
@@ -28,6 +29,8 @@ class App extends Component {
         <p className="App-intro">
           {this.state.user.username}
         </p>
+
+        <SearchBar />
       </div>
     );
   }

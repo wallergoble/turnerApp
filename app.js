@@ -4,12 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const cors = require('cors')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+// Mongoose model
 const Title = require('./models/title')
-var app = express();
+
+
 // Database variables
 const mongoose = require('mongoose')
 const databaseURI = 'mongodb://readonly:turner@ds043348.mongolab.com:43348/dev-challenge'
@@ -19,13 +22,18 @@ let db = null
 mongoose.connect(databaseURI)
 
 mongoose.connection.on('error', (err) => {
-  console.error(`MongoDB connection error ${err}`)
+  console.error(`MongoDB connection error: ${err}`)
   process.exit(-1)
 })
 
 mongoose.connection.once('open', () => {
-  console.log('Mongoose has connected to MongoDB')
+  console.log('Mongoose connection to MongoDB is complete')
 })
+
+var app = express();
+
+// Middleware to enable cors
+app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -59,9 +67,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
-Title.find({"TitleName" : 'Cavalcade'})
-    .then( title => console.log(title))
 
 module.exports = app;
