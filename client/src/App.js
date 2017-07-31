@@ -8,7 +8,7 @@ class App extends Component {
 
     this.state =  {
       user: {
-        
+
       }
     }
   }
@@ -26,7 +26,7 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          {this.state.user.id}
+          {this.state.user.username}
         </p>
       </div>
     );

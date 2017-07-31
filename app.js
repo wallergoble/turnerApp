@@ -8,7 +8,24 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+const Title = require('./models/title')
 var app = express();
+// Database variables
+const mongoose = require('mongoose')
+const databaseURI = 'mongodb://readonly:turner@ds043348.mongolab.com:43348/dev-challenge'
+let db = null
+
+// initialize database
+mongoose.connect(databaseURI)
+
+mongoose.connection.on('error', (err) => {
+  console.error(`MongoDB connection error ${err}`)
+  process.exit(-1)
+})
+
+mongoose.connection.once('open', () => {
+  console.log('Mongoose has connected to MongoDB')
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,5 +59,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+Title.find({"TitleName" : 'Cavalcade'})
+    .then( title => console.log(title))
 
 module.exports = app;
