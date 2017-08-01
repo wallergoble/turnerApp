@@ -2,7 +2,7 @@ import React from 'react'
 
 import SearchResults from './SearchResults'
 
-class SearchBar extends React.Component {
+class Search extends React.Component {
     constructor() {
         super()
 
@@ -62,11 +62,11 @@ class SearchBar extends React.Component {
                         Search!
                     </button>
                 </form>
-                <h3> { LOADING_TEXT } </h3> 
+                <h3 className="spin"> { LOADING_TEXT } </h3> 
                 { this.renderSearchResults() }
             </div>
         )
     }
 }
 
-export default SearchBar
+export default Search

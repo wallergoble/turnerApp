@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 // Respond with all titles
 router.get('/all', (req, res, next) => {
   Title.find({})
-    .then(titles => res.json(titles.filter(title => title.TitleName !== title.TitleNameSortable)))
+    .then(titles => res.json(titles))
 })
 
 // Get title by Name
