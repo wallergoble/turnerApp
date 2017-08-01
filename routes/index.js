@@ -35,13 +35,4 @@ router.get('/title/:date', (req, res, next) => {
     .catch(err => console.error(err));
 });
 
-// Sanity Checker
-router.get('/sanity', (req, res, next) => {
-  Title.find({ TitleName: 'Cavalcade' })
-    .then(title => {
-      res.json(title);
-    })
-    .catch(err => console.error(err));
-});
-
 module.exports = router;
