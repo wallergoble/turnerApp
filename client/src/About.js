@@ -111,6 +111,9 @@ const About = () =>
                 Add search functionality at the details page(i.e. click on a
                 genre and see movies of that genre)
             </li>
+            <li>
+                Add some unit tests which mock out the API calls 
+            </li>
         </ul>
 
         <h2> Thank You </h2>
