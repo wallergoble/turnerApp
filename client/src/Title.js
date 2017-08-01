@@ -38,7 +38,7 @@ const Title = (props) => {
                 <h3> Other Staff </h3>
                 <ul>
                     {
-                        others.map(other => <li key={other.ParticipantId}> {other.Name} - {other.RoleType} </li>)
+                    others.map(other => <li key={other.ParticipantId}> {other.Name} - {other.RoleType} </li>)
                     }
                 </ul>
                 
