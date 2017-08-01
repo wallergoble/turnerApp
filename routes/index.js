@@ -1,42 +1,47 @@
 var express = require('express');
 var router = express.Router();
 
-const Title = require('../models/title')
+const Title = require('../models/title');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index')
+  res.render('index');
 });
 
 // Respond with all titles
 router.get('/all', (req, res, next) => {
-  Title.find({})
-    .then(titles => res.json(titles))
-})
+  Title.find({}).then(titles => res.json(titles));
+});
 
 // Get title by Name
 router.get('/search/:query', (req, res, next) => {
-  let query = req.params.name
-  Title.find({ 'TitleName' : { '$regex': req.params.query, '$options': 'i' } })
+  let query = req.params.name;
+  Title.find({ TitleName: { $regex: req.params.query, $options: 'i' } })
     .then(titles => res.json(titles))
-    .catch( err => console.error(err))
-})
+    .catch(err => console.error(err));
+});
 
 // Get title by ID
 router.get('/id/:id', (req, res, next) => {
-  Title.find({"TitleId" : req.params.id})
+  Title.find({ TitleId: req.params.id })
     .then(title => res.json(title))
-    .catch( err => console.error(err))
-})
+    .catch(err => console.error(err));
+});
+
+// Get title by date
+router.get('/title/:date', (req, res, next) => {
+  Title.find({ ReleaseYear: req.params.date })
+    .then(titles => res.json(titles))
+    .catch(err => console.error(err));
+});
 
 // Sanity Checker
 router.get('/sanity', (req, res, next) => {
-  Title.find({"TitleName" : 'Cavalcade'})
-    .then( title => {
-      console.log(title)
-      res.json(title)
+  Title.find({ TitleName: 'Cavalcade' })
+    .then(title => {
+      res.json(title);
     })
-    .catch( err => console.error(err))
-})
+    .catch(err => console.error(err));
+});
 
 module.exports = router;

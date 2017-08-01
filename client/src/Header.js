@@ -1,16 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-const Header = () => (
+const Header = () =>
     <div>
         <h1> Turner Movie Database </h1>
         <nav>
-            <Link to='/'> Search </Link>
-            <Link to='/allMovies'> All Movies </Link>
-            <Link to='/about'> About </Link>
+            <Link to="/"> Search </Link>
+            <Link to="/allMovies"> All Movies </Link>
+            <Link to="/about"> About </Link>
         </nav>
-    </div>
-)
+    </div>;
 
-export default Header
+export default Header;
