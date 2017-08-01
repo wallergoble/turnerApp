@@ -1,11 +1,11 @@
-{
+const testData = {
 	"Awards" : [
 		{
 			"AwardWon" : false,
 			"AwardYear" : 1933,
 			"Participants" : [
 				"Diana Wynyard"
-				],
+			],
 			"Award" : "Best Actress",
 			"AwardCompany" : "Academy Award"
 		},
@@ -314,3 +314,4 @@
 	"TitleNameSortable" : "Cavalcade",
 	"_id" : "534c60c2bc028401c08db897"
 }
+export default testData
