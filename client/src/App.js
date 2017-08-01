@@ -6,7 +6,7 @@ import Main from './Main';
 import ScriptTags from './ScriptTags';
 
 const App = () =>
-    <div>
+    <div className="app-container">
         <Header />
         <Main />
         <ScriptTags />

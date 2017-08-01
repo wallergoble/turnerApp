@@ -18,7 +18,8 @@ const Title = props => {
     const others = data.Participants.filter(
         person => person.RoleType !== 'Actor' && person.RoleType !== 'Director'
     );
-
+    // Handle header in case there are no awards
+    const AWARDS_HEADER = data.Awards === [] ? '' : 'Awards';
     return (
         <div className="title-container">
             <h1>
@@ -29,61 +30,68 @@ const Title = props => {
             <p>
                 Genres: {data.Genres.join(', ')}
             </p>
+            <p>
+                Director: {director[0].Name}
+            </p>
 
             {/* Choose a random story line, because there are sometimes duplicates */}
-            <p>
+            <p className="text-align-left">
                 {
                     data.Storylines[random(data.Storylines.length - 1)]
                         .Description
                 }
             </p>
-
+            {/* I wanted to filter by isKey here but I wasn't exactly sure what it means to be iskey */}
             <div className="actors">
-                <p>
-                    Director: {director[0].Name}
-                </p>
                 <h3> On Screen Actors </h3>
-                <ul>
+                <ul className="cast-list">
                     {actors.map(actor =>
-                        <li key={actor.ParticipantId}>
+                        <li>
                             {actor.Name}
                         </li>
                     )}
                 </ul>
                 <h3> Other Staff </h3>
-                <ul>
+                <ul className="cast-list">
                     {others.map(other =>
-                        <li key={other.ParticipantId}>
+                        <li>
                             {other.Name} - {other.RoleType}
                         </li>
                     )}
                 </ul>
             </div>
-            <div className="awards">
-                <h5> Awards </h5>
-                {data.Awards.map(award => {
-                    return (
-                        <section className="awards-list">
-                            <p>
-                                {award.Participants
-                                    ? `Who?: ${award.Participants.join(' ,')}`
-                                    : null}
-                            </p>
-                            <p>
-                                When?: {award.AwardYear}
-                            </p>
-                            <p>
-                                What?: {award.Award}
-                            </p>
-                            <p>
-                                Where?: {award.AwardCompany}
-                            </p>
-                            <p>
-                                Did They Win?: {award.AwardWon ? 'Yes' : 'No'}
-                            </p>
-                        </section>
-                    );
-                })}
+            <div>
+                <h2>
+                    {' '}{AWARDS_HEADER}{' '}
+                </h2>
+                <div className="awards-container">
+                    {data.Awards.map(award => {
+                        return (
+                            <section className="awards-card card">
+                                <p className="card-text">
+                                    {award.Participants
+                                        ? `Who?: ${award.Participants.join(
+                                              ' ,'
+                                          )}`
+                                        : null}
+                                </p>
+                                <p className="card-text">
+                                    When?: {award.AwardYear}
+                                </p>
+                                <p className="card-text">
+                                    What?: {award.Award}
+                                </p>
+                                <p className="card-text">
+                                    Where?: {award.AwardCompany}
+                                </p>
+                                <p className="card-text">
+                                    Did They Win?:{' '}
+                                    {award.AwardWon ? 'Yes' : 'No'}
+                                </p>
+                            </section>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );

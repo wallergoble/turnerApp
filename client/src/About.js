@@ -16,6 +16,7 @@ const About = () =>
             I made a few decisions in the architecture of my app which I feel
             are worth noting.
         </p>
+        <h4> Generators </h4>
         <p>
             First and foremost were my moves to use both express-generator and
             create-react-app. I generally start with these anyways to get rid of
@@ -24,6 +25,7 @@ const About = () =>
             these were crucial to allowing me to focus on the user stories at
             hand.
         </p>
+        <h4> State Management </h4>
         <p>
             My next notable design decision was the notable absence of redux.
             While I considered using it just to brush up and show off my skills
@@ -35,6 +37,7 @@ const About = () =>
             the setup and boilerplate required wouldn't be worth the benefits
             gained from the library.
         </p>
+        <h4> Functional Components </h4>
         <p>
             I try to favor stateless functional components whenever I don't
             absolutely need to hook into a lifecycle method or use state while
@@ -77,11 +80,11 @@ const About = () =>
             learn more about how to harness the power of Node.
         </p>
         <p>
-            Lastly, it's just not very pretty. I'm not great at coming up with
+            Lastly, it's just not very pretty. I put off the CSS for last, and I'm not great at coming up with
             visual designs ab origino; my strengths lie more in the realms of UX
             critiquing and taking a wireframe and realizing it. I drew out some
             petty wireframes during my planning of this app, but they obviously
-            were a little lacking.
+            were a little lacking. The only thing that excited me about the css of this project was the prospect of using a module library, but I decided the setup time would detract too much from feature implementation.
         </p>
 
         <h2> Future Development </h2>

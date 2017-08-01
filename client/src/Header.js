@@ -3,12 +3,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () =>
-    <div>
+    <div className="jumbotron header-container">
         <h1> Turner Movie Database </h1>
-        <nav>
-            <Link to="/"> Search </Link>
-            <Link to="/allMovies"> All Movies </Link>
-            <Link to="/about"> About </Link>
+        <nav className="navbar">
+            <Link className="nav-item nav-link btn" to="/">
+                {' '}Search{' '}
+            </Link>
+            <Link className="nav-item nav-link btn" to="/allMovies">
+                {' '}All Movies{' '}
+            </Link>
+            <Link className="nav-item nav-link btn" to="/about">
+                {' '}About{' '}
+            </Link>
         </nav>
     </div>;
 

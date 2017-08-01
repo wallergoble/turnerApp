@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 // Props should be an array of objects
 const SearchResults = props => {
     return (
-        <ul>
+        <div className="search-results-container">
             {props.data.map(details => {
                 return (
-                    <div className="search-results-container">
+                    <div className="search-results-item">
                         <Link
                             to={{
                                 pathname: `/title/${details.TitleId}`,
@@ -21,7 +21,7 @@ const SearchResults = props => {
                     </div>
                 );
             })}
-        </ul>
+        </div>
     );
 };
 

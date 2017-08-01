@@ -46,21 +46,24 @@ class Search extends React.Component {
         return (
             <div className="search-box-container">
                 <form
-                    className="search-bar"
+                    className="search-form"
                     onSubmit={event => this.getData(event)}
                 >
-                    <h2> Search for a title! </h2>
-                    <input
-                        type="text"
-                        placeholder="All Quiet On The Western Front"
-                        ref={input => {
-                            this.searchQuery = input;
-                        }}
-                        required
-                    />
-                    <button type="submit" className="search-button">
-                        Search!
-                    </button>
+                    <div className="form-group">
+                        <h2> Search for a title! </h2>
+                        <input
+                            className="form-control search-bar"
+                            type="text"
+                            placeholder="All Quiet On The Western Front"
+                            ref={input => {
+                                this.searchQuery = input;
+                            }}
+                            required
+                        />
+                        <button type="submit" className="btn btn-primary">
+                            Search!
+                        </button>
+                    </div>
                 </form>
                 <h3 className="spin">
                     {LOADING_TEXT}
